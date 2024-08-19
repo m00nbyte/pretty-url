@@ -14,7 +14,7 @@
     </head>
     <body class="flex flex-col justify-between h-screen gap-8 px-10 pt-10 text-white md:px-20 bg-stone-900">
         <div class="flex flex-col gap-8">
-            <h1 class="flex items-center justify-between text-3xl font-bold">
+            <h1 class="flex items-center justify-between pb-4 text-3xl font-bold border-b-2 border-stone-400">
                 <span>Pretty URL</span>
                 <a href="https://github.com/m00nbyte/pretty-url" target="_blank">
                     <div class="i-[mdi-github]"></div>
@@ -35,7 +35,9 @@
                     class="w-full p-2 text-sm transition-colors border-2 bg-stone-800 border-stone-500 focus:outline-none focus:border-blue-500"
                     placeholder="Enter a URL"
                     rows="8"
-                ></textarea>
+                >
+https://www.netcup.de/bestellen/domaincheck.php?domain=prettyurl&tld=418</textarea
+                >
                 <button
                     id="format-button"
                     class="w-full py-2 text-white transition-colors border border-sky-800 hover:border-sky-900 bg-sky-800 hover:bg-sky-900"
@@ -71,8 +73,8 @@
                                 class="absolute flex px-2 py-2 transition-colors rounded-md copy-button top-2 right-2 hover:bg-stone-700"
                                 data-type="url"
                             >
-                                <div class="i-[mdi-clipboard-text] text-2xl copy-icon"></div>
-                                <div class="hidden copy-finish">Copied!</div>
+                                <div class="i-[mdi-clipboard-text] copy-icon"></div>
+                                <div class="hidden text-xs copy-finish">Copied!</div>
                             </button>
                         </div>
                     </div>
@@ -84,8 +86,8 @@
                                 class="absolute flex px-2 py-2 transition-colors rounded-md copy-button top-2 right-2 hover:bg-stone-700"
                                 data-type="json"
                             >
-                                <div class="i-[mdi-clipboard-text] text-2xl copy-icon"></div>
-                                <div class="hidden copy-finish">Copied!</div>
+                                <div class="i-[mdi-clipboard-text] copy-icon"></div>
+                                <div class="hidden text-xs copy-finish">Copied!</div>
                             </button>
                         </div>
                     </div>
