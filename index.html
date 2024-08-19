@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pretty URL</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+        <link href="https://cdn.jsdelivr.net/npm/prism-themes@1.9.0/themes/prism-vsc-dark-plus.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/combine/npm/prismjs@1.29.0/prism.min.js,npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+        <link rel="stylesheet" href="bundle.min.css" />
+        <script type="module" src="bundle.min.js"></script>
+    </head>
+    <body class="flex flex-col justify-between h-screen gap-8 px-10 pt-10 text-white md:px-20 bg-stone-900">
+        <div class="flex flex-col gap-8">
+            <h1 class="flex items-center justify-between text-3xl font-bold">
+                <span>Pretty URL</span>
+                <a href="https://github.com/m00nbyte/pretty-url" target="_blank">
+                    <div class="i-[mdi-github]"></div>
+                </a>
+            </h1>
+
+            <div class="flex flex-col gap-4">
+                <p class="text-xl">
+                    Whether you're a developer needing to break down query parameters or just someone curious about the
+                    structure of a URL, this tool has you covered.
+                </p>
+                <p class="text-xl">Just paste a URL and instantly see the formatted result below.</p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <textarea
+                    id="url-input"
+                    class="w-full p-2 text-sm transition-colors border-2 bg-stone-800 border-stone-500 focus:outline-none focus:border-blue-500"
+                    placeholder="Enter a URL"
+                    rows="8"
+                >
+https://www.google-analytics.com/g/collect?v=2&tid=G-00000000&_p=849208251&cid=59297376183f31151882386d97389595859d744108ab3cba2f41d71618a6b3a8&ul=de-DE&sr=1600x1000&uaa=x86&uab=64&uafvl=NotA%3BBrand;99.0.0.0|Google%20Chrome;127.0.6533.100|Chromium;127.0.6533.100&uamb=0&uap=Windows&uapv=15.0.0&uaw=0&_s=1&cu=EUR&sid=1723638233&sct=11&dl=https://xxxlutz-at.qc.xxxl-dev.at/?&dt=Das Online Möbelhaus - Möbel online kaufen bei XXXLutz&_ss=1&_uip=81.217.57.0&seg=1&en=page_view&_ee=1&gcs=G111&gcd=13r3rPr2r5&npa=0&dma_cps=sypham&dma=1&ir=1&pae=1&pscdl=noapi&ep.statsig_stable_id=U-1723039531940&ep.statsig_experiment_id_variant=stickyFooterOnPDP:0&ep.statsig_experiment_layer=20240226-add-to-cart-mobile_2&ep.dsgvo_consent=accepted&ep.cookie_consent_settings=statistic--adwords:1;mouseflow:1;iadvize:1;tealium_collect:1;floodlight:1;easymarketing:1;googleanalytics:1;peerius_session:1;statsig:1;country_overlay:1;dynatrace:1|marketing--rtb:1;facebook:1;gadr:1;criteo:1;trbo:1;moebel24_at:1;pinterest:1;bing:1;easymarketing_marketing:1;sap_marketing_flag:1;inmoment:1;ua_advertising:1;floodlight_personalisation:1&ep.logged_in=false&ep.delivery_date_calculator=false&ep.customer_type=new&ep.page_type=home&ep.criteo_hash_value=sdQp818ZR8Bdf-LzYj_En6RCJyvgn2qm&ep.environment=testing&ep.shop_country=at&ep.shop_language=de&ep.shop_brand=xxxlutz&ep.full_referrer=https://xxxlutz-at.qc.xxxl-dev.at&ep.tag_management=1.0.315::238::0.3.8::GA_pageview::BE&ep.contrast_mode=false&up.client_id=59297376183f31151882386d97389595859d744108ab3cba2f41d71618a6b3a8&up.login_status=false&tfd=2137&frm=0</textarea
+                >
+                <button
+                    id="format-button"
+                    class="w-full py-2 text-white transition-colors border border-sky-800 hover:border-sky-900 bg-sky-800 hover:bg-sky-900"
+                >
+                    Format
+                </button>
+            </div>
+
+            <div id="result" class="flex-col hidden gap-4">
+                <h2 class="text-2xl font-bold">Result:</h2>
+
+                <div id="error" class="hidden"></div>
+                <div id="output" class="flex-col hidden gap-4">
+                    <div class="flex flex-col items-center text-white sm:flex-row justify-evenly">
+                        <div
+                            class="w-full px-2 py-2 text-center transition-colors cursor-pointer bg-stone-600 hover:bg-stone-600 output-tab"
+                            data-type="url"
+                        >
+                            Formatted URL
+                        </div>
+                        <div
+                            class="w-full px-2 py-2 text-center transition-colors cursor-pointer bg-stone-800 hover:bg-stone-700 output-tab"
+                            data-type="json"
+                        >
+                            Formatted JSON
+                        </div>
+                    </div>
+
+                    <div id="output-url">
+                        <div class="relative">
+                            <pre id="formatted-url" class="p-4 overflow-y-auto text-sm bg-stone-800"></pre>
+                            <button
+                                class="absolute flex px-2 py-2 transition-colors rounded-md copy-button top-2 right-2 hover:bg-stone-700"
+                                data-type="url"
+                            >
+                                <div class="i-[mdi-clipboard-text] text-2xl copy-icon"></div>
+                                <div class="hidden copy-finish">Copied!</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="output-json" class="hidden">
+                        <div class="relative">
+                            <pre id="formatted-json" class="p-4 overflow-y-auto text-sm language-json bg-stone-800"></pre>
+                            <button
+                                class="absolute flex px-2 py-2 transition-colors rounded-md copy-button top-2 right-2 hover:bg-stone-700"
+                                data-type="json"
+                            >
+                                <div class="i-[mdi-clipboard-text] text-2xl copy-icon"></div>
+                                <div class="hidden copy-finish">Copied!</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="footer" class="flex flex-row items-center justify-center gap-1 pb-5">
+            <span>made with</span>
+            <div class="i-[mdi-heart] text-red-600"></div>
+            <span>by <a href="https://moonbyte.at/" target="_blank" class="underline">moonbyte</a></span>
+        </div>
+    </body>
+</html>

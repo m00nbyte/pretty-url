@@ -1,0 +1,12 @@
+declare const inputUrl: HTMLTextAreaElement;
+declare const outputError: HTMLDivElement;
+declare const resultContainer: HTMLDivElement;
+declare const outputContainer: HTMLDivElement;
+declare const outputTabs: NodeListOf<HTMLDivElement>;
+declare const outputUrl: HTMLPreElement;
+declare const outputJson: HTMLPreElement;
+declare const buttonFormat: HTMLButtonElement;
+declare const buttonCopy: NodeListOf<HTMLDivElement>;
+declare const buttonCopyUrl: HTMLButtonElement;
+declare const buttonCopyJson: HTMLButtonElement;
+declare const formatURL: () => void;
