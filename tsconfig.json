@@ -1,0 +1,41 @@
+{
+    "extends": "./tsconfig.paths.json",
+    "compilerOptions": {
+        // general options
+        "lib": ["esnext", "dom"],
+        "module": "esnext",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "outDir": "./dist",
+        "declaration": true,
+        "declarationDir": "./dist",
+        // main checks
+        "noEmit": true,
+        "allowJs": true,
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "isolatedModules": true,
+        "downlevelIteration": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        // strict checks
+        "strict": true,
+        "alwaysStrict": true,
+        "allowUnreachableCode": false,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "skipLibCheck": true,
+        // linter checks
+        "noImplicitReturns": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        // plugins
+        "plugins": []
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+}
