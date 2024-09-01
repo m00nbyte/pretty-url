@@ -114,6 +114,11 @@ export default [
                 format: 'es'
             }
         ],
+        onwarn: (warning, defaultHandler) => {
+            if (warning.code !== 'FILE_NAME_CONFLICT') {
+                defaultHandler(warning);
+            }
+        },
         plugins: [
             postcss({
                 extract: true,

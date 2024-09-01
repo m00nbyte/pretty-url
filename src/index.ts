@@ -1,7 +1,8 @@
 const inputUrl = document.getElementById('url-input') as HTMLTextAreaElement;
-const outputError = document.getElementById('error') as HTMLDivElement;
 const resultContainer = document.getElementById('result') as HTMLDivElement;
 const outputContainer = document.getElementById('output') as HTMLDivElement;
+const outputError = document.getElementById('error') as HTMLDivElement;
+
 const outputTabs = document.querySelectorAll('.output-tab') as NodeListOf<HTMLDivElement>;
 const outputUrl = document.getElementById('formatted-url') as HTMLPreElement;
 const outputJson = document.getElementById('formatted-json') as HTMLPreElement;
