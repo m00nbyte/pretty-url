@@ -33,7 +33,7 @@ export default [
             }
         ],
         external: (id) => {
-            if (Object.keys(pkg.dependencies).includes(id) || id === 'module') return true;
+            if (Object.keys(pkg.dependencies || {}).includes(id) || id === 'module') return true;
             return false;
         },
         plugins: [

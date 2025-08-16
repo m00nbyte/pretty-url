@@ -29,7 +29,6 @@
     "bugs": {
         "url": "https://github.com/m00nbyte/pretty-url/issues"
     },
-    "dependencies": {},
     "devDependencies": {
         "@babel/core": "^7.24.6",
         "@babel/eslint-parser": "^7.24.6",
@@ -67,6 +66,7 @@
         "autoprefixer": "^10.4.20",
         "cross-env": "^7.0.3",
         "cssnano": "^7.0.5",
+        "eslint": "^9.33.0",
         "gh-pages": "^6.1.1",
         "mocha": "^10.4.0",
         "postcss": "^8.4.41",
